@@ -1,0 +1,85 @@
+<html>
+<head>
+<script language = "JavaScript">
+
+var number = 11;
+var namenumber = -1;
+var myList = [ "Morthos", "Fallacy", "Toc", "Gunter" ]; //technically called array
+
+function tester()
+	{
+		namenumber = namenumber + 1
+		alert(myList[namenumber])
+	
+		if(namenumber == 3)
+			{
+			namenumber = -1
+			}	
+	}
+ 
+function welcome()
+	{
+		var answer = prompt("What's your name?"); // "string literal"
+		alert("Welcome to my world, " + answer);
+	}
+
+function countdown()
+	{
+		number = number - 1 // = is an assignment operator. whts on the right os whats on the left
+	
+		if(number == 0) // == is for equality
+			{
+				alert("*Kaboom*")
+				alert("What have you done!?")
+				number = 11;
+			}
+		else
+			{
+				alert(number)
+			}
+	}
+
+function clickme()
+	{
+		var answer = confirm("You're really gonna listen to a button?");
+		
+		if(answer == true)
+			{
+				alert("I thank you for your trust")
+			}
+		else
+			{
+				alert("Oh")
+				alert("Okay then...")
+			}
+	} 
+
+</script>
+</head>
+
+<body bgcolor="gray">
+<center> 
+<h1> 
+<font color=#004242>
+JavaScript Tester 
+</font>
+</h1>
+
+<br/>
+<br/>
+
+<input type="button" value="Welcome" onClick="welcome()">
+<input type="button" value="Click Me" onClick="clickme()">
+<input type="button" value="Countdown" onClick="countdown()">
+<input type="button" value="Names" onClick="tester()">
+
+
+<br/>
+<br/>
+<br/>
+
+<h3> <a href="index.html">Homepage</a> </h3>
+
+</center>
+</body>
+</html>
