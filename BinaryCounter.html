@@ -1,0 +1,152 @@
+<html>
+<head>
+
+<script language="javaScript">
+
+
+var num = 0;
+var autoClicked = false
+function addOne()
+{
+	num++ //same thing as num = num + 1
+	
+	if (num == 16)
+	{
+		num = 0
+	}
+	
+	
+	if (autoClicked == true)
+		{
+			var timer = setTimeout("addOne()", 900);
+		}
+		
+		
+	document.getElementById("count").value = num //put num in textbox
+	flipLEDs(); //sends it to the next functoin
+	
+}
+
+function auto()
+{
+	if (autoClicked == false)
+		{
+			autoClicked = true;
+			document.getElementById("runStop").value = "Pause";
+			addOne();
+		}
+	else
+		{
+			autoClicked = false;
+			document.getElementById("runStop").value = "Run";
+			
+			clearTimeout(timer)
+		}	
+	
+		
+}
+
+function onesPlace()
+{
+	document.getElementById("ones").src = "images/ledON.png";
+	
+	if (num % 2 == 0)
+		{
+			document.getElementById("ones").src = "images/ledOFF.png";
+		}
+	
+	twosPlace();	
+}
+
+function twosPlace()
+{
+	document.getElementById("twos").src = "images/ledON.png";
+	
+	if (num % 4 < 2)
+		{
+			document.getElementById("twos").src = "images/ledOFF.png";
+		}
+		
+	foursPlace();	
+}
+
+function foursPlace()
+{
+	document.getElementById("fours").src = "images/ledON.png";
+	
+	if (num % 8 < 4)
+		{
+			document.getElementById("fours").src = "images/ledOFF.png";
+		}
+		
+	eightsPlace();	
+}
+
+function eightsPlace()
+{
+	document.getElementById("eights").src = "images/ledON.png";
+	
+	if (num % 16 < 8)
+		{
+			document.getElementById("eights").src = "images/ledOFF.png";
+		}
+}
+
+function flipLEDs()
+{
+	onesPlace();
+	twosPlace();
+	foursPlace();
+	eightsPlace();
+}
+
+
+
+
+</script>
+<head>
+<body background="images/herobkpng.gif">
+<center>
+<h1> Binary Counting </h1>
+
+<input type = "button" value = "Add One" onclick="addOne()"/>
+<input id="runStop" type = "button" value = "Run" onclick="auto()"/><br/><br/>
+<input id="count" type = "text" size ="20" style="text-align:center" readonly="true">
+
+
+<div id="first" style="position:absolute; top:150; left: 600">
+2^0<br/>
+<img id="ones" src="images/ledOFF.png" width="50"/>
+</div>
+
+<div id="second" style="position:absolute; top:150; left: 500">
+2^1<br/>
+<img id="twos" src="images/ledOFF.png" width="50"/>
+</div>
+
+<div id="third" style="position:absolute; top:150; left: 400">
+2^2<br/>
+<img id="fours" src="images/ledOFF.png" width="50"/>
+</div>
+
+
+<div id="fourth" style="position:absolute; top:150; left: 300">
+2^3<br/>
+<img id="eights" src="images/ledOFF.png" width="50"/>
+</div>
+
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<h3> <a href="index.html">Homepage</a> </h3>
+
+</center>
+</body>
+</html>
