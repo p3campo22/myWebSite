@@ -1,0 +1,76 @@
+<html>
+<head> 
+<script language="JavaScript">
+
+var partsOfSpeech = [ "Enter a male name", "Enter an adjective", "Enter a piece of furniture", "Enter an odd phrase", "Enter an article of clothing", "Enter a color or texture" ];
+var answers = new Array(partsOfSpeech.length);
+var story = ["There once was a man named ",". He didn’t know it yet, but he was a(n) "," magician. One day he was nodding off on the "," and he woke up in his bed instead! Another time he sneezed and accidentally said the magic words: “","” and his  "," became ","! He really needs to be more careful!" ];
+var count = 0;
+
+function prompt()
+{
+	document.getElementById("userEnter").style.visibility = "visible";
+	document.getElementById("story").style.visibility = "hidden";
+	document.getElementById("response").value = partsOfSpeech[count]
+
+}
+
+
+function getWords()
+{
+	var wordBox = document.getElementById("response")
+	answers[count] = wordBox.value
+	count++;
+	
+	if (count < partsOfSpeech.length )
+	{
+		prompt();
+	}
+	else 
+	{
+		document.getElementById("story").innerHTML = displayStory();
+		count = 0;
+	}
+	
+}
+
+function displayStory()
+{
+	var answer = "";
+	var i = 0;
+	
+	for ( i = 0; i < answers.length; i++)
+	{
+	answer = answer + story[i];
+	answer = answer + answers[i];
+	}
+	
+	document.getElementById("userEnter").style.visibility = "hidden";
+	document.getElementById("story").style.visibility = "visible";
+	
+	
+	return answer;
+}
+
+</script>
+</head>
+<body>
+<center> 
+<h1>MadLibs</h1>
+<input id="daButton" type="button" value="start" onClick="prompt()"/>
+<h5>Click out of the text box to contiue</h5>
+</center>
+<div id="userEnter" style="position:absolute; left:200; top: 100; visibility:hidden;">
+<input type = "text" id="response" value="" width = "100" onfocusout="getWords()"/>
+</div>
+
+<div id="story" style="position:absolute; overflow:scroll; top:300; left:200; width:400; height: 200; visibility:hidden">
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+</div>
+
+<center> 
+<h3> <a href="index.html">Homepage</a> </h3>
+</center>
+
+</body>
+</html>
