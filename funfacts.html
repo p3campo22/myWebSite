@@ -1,0 +1,83 @@
+<html> 
+<head> 
+<script language="JavaScript">
+
+/*************** Algorithm ******************
+1.Get number of element from group
+2.store element number in a variable
+3.use getElementById to link one to the other
+4.display fact in textbox
+5.make a variable++ button to scroll through 
+6.or make a for loop to make it continuous
+********************************************/
+
+
+var group = ["~ Choose a person ~", "Nelson Mandela", "Friedrich Nietzsche", "Theodore Roosevelt", "Joe Rogan", "Abraham Lincoln", "Michelangelo", "William Shakespeare", "John F Kennedy"]; 
+
+var facts = ["~ No person selected ~", "It always seems impossible until it’s done", "That which does not kill us makes us stronger", "Believe you can and you’re halfway there", "Be the hero of your own story", "Whatever you are, be a good one", "Genius is eternal patience", "Love all, trust a few, do wrong to none", "Those who dare to fail miserably can achieve greatly"];
+
+function loadData()
+{
+	var sum = 0;
+	for(var i = 0; i<group.length; i++)
+    {
+        var daList = document.getElementById("prez");
+  		var option = document.createElement("option");
+  		option.text = group[i];
+  		daList.add(option);
+    }
+}
+
+// This function identifies which element from the drop down has been selected. It calls the 
+// getIndex function to acquire what the index of the selected item. Then it displays the 
+// corresponding element in the facts list. (This is diplayed in the textbox on the web page.)
+function start()
+{
+	var names = document.getElementById("prez");
+	
+	document.getElementById("funFact").value = facts[getIndex(names.value)];
+}
+
+// This function searches the group array for the element passed as a parameter
+// and returns the index number for that element in the array.
+function getIndex(d)
+{
+	var answer = -1;
+	
+	for (var i = 0; i < group.length; i++)
+	{
+		if (group[i] == d )
+		{
+			answer = i;
+		}
+	}
+	
+	
+	return answer;
+}
+
+
+
+</script>
+</head>
+
+<body onload="loadData()" bgcolor=#004546> 
+<center>
+<h5>I lied, they're just quotes</h5>
+<h1>Quotes By Some People</h1>
+<h3> <a href="index.html">Homepage</a> </h3>
+
+<br/><br/>
+<table border = 3>
+	<tr>
+		<td>  	<select name="p1" id="prez"></select>	</td>
+		<td>	<input id="funFact" type="text" size="40" readonly=true/> </td>
+	</tr>
+</table>
+<br/><br/>
+<input type="button" value="click" onclick="start()"/>
+</center>
+
+
+</body>
+</html>
