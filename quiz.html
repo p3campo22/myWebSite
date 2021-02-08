@@ -1,0 +1,104 @@
+<html> 
+<head> 
+<script language="JavaScript">
+
+/*************** Algorithm ******************
+1. Write questions with simple answers
+2. Check which question you are on
+3. Find coorosponding answer
+4. Check if their answer matches the answer
+5. If it does, increase score
+6. If no, decrease score(nah nvm)
+7. Next question
+8. Display score with ending message
+
+*/
+
+
+var questions = ["2 + 2?", "What band released the song 'Africa'?", "What does the roman numeral XIV stand for?", "What company released the Xbox?", "What do you call a baby deer?", "How many days are in a leap year?", "Which element has the symbol Fe?", "What house was Harry Potter almost put into?", "What color of visable light has the lowest frequesncy?", "(44864*6+64)*1738?"];
+var answers = ["4", "toto", "14", "microsoft", "fawn", "366", "iron", "slytherin", "red", "467953024"];
+var index = 0;
+var score = 0;
+
+function firstQuestion()
+{
+	alert("Don't use any capitals and be careful on spelling! Good Luck!");
+	document.getElementById("question").value = questions[index];
+	index++;
+	document.getElementById("startbutton").style.visibility = "hidden";
+	document.getElementById("nextbutton").style.visibility = "visible";
+}
+
+function displayQuestion()
+{
+	updateScore();
+	if (index == questions.length)
+	{
+		alert("You scored " + score + "/" +questions.length+ "00 points");
+		if(score == questions.length*100)
+		{
+			alert("100%? Impressive")
+		}
+		index = 0;
+		score = 0;
+	}
+	document.getElementById("question").value = questions[index]
+	index++
+	document.getElementById("answer").value = ""
+}
+ 
+function updateScore()
+{
+	if (document.getElementById("answer").value == answers[checkAnswer(document.getElementById("question").value)])
+	{
+		score+=100;
+		alert("Correct! +100");
+	}
+	else
+	{
+		alert("Aw too bad +0");
+	}
+}
+
+function checkAnswer(ans)
+{
+	var check = -1;
+	for (var i = 0; i < questions.length; i++)
+	{
+		if (questions[i] == ans )
+		{
+			check = i;
+		}
+	}
+	return check;
+}
+
+</script>
+</head>
+<body > 
+<center>
+<h1>Quiz!</h1>
+<input id= "startbutton" type="button" value="Start" onclick="firstQuestion()"/>
+<br/><br/>
+
+<table border = 3>
+	<tr>
+		<td>  	<input id="question" type="text" size="70" readonly = true/>	</td>
+	</tr>
+	<tr height = "12"><td></td>
+	</tr>
+	<tr>
+		<td>	<input id="answer" type="text" size="70" /> </td>
+	</tr>
+</table>
+<br/><br/>
+
+<input id= "nextbutton" style="visibility:hidden" type="button" value="Next Question" onclick="displayQuestion()"/>
+
+<br/><br/>
+<h3> <a href="index.html">Homepage</a> </h3>
+</center>
+
+
+</body>
+</html>
