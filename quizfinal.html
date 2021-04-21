@@ -1,0 +1,103 @@
+<html> 
+<head> 
+<script language="JavaScript">
+
+var questions = ["2 + 2?", "What band released the song 'Africa'?", "What does the roman numeral XIV stand for?", "What company released the Xbox?", "What do you call a baby deer?", "How many days are in a leap year?", "Which element has the symbol Fe?", "What house was Harry Potter almost put into?", "What color of visable light has the lowest frequesncy?", "(44864*6+64)*1738?"];
+var answers = ["4", "toto", "14", "microsoft", "fawn", "366", "iron", "slytherin", "red", "467953024"];
+var num = 0;
+var score = 0;
+
+
+function q1()
+{
+	alert("Don't use any capitals and be careful on spelling! Good Luck!");
+	document.getElementById("question").value = questions[num];
+	num++;
+	document.getElementById("start").style.visibility = "hidden";
+	document.getElementById("next").style.visibility = "visible";
+	document.getElementById("scoredisplay").value = "Score = " + score + "/" + questions.length + "00";
+}
+
+function qNext()
+{
+	scoreUpdate();
+	if (num == questions.length)
+	{
+		if(score == questions.length*10)
+		{
+			alert("You got a perfect score!")
+		}
+		num = 0;
+		score = 0;
+		document.getElementById("scoredisplay").value = "Score = " + score + "/" + questions.length + "00"
+	}
+	document.getElementById("question").value = questions[num]
+	num++
+	document.getElementById("answer").value = ""
+}
+ 
+function scoreUpdate()
+{
+	if (document.getElementById("answer").value == answers[ansCheck(document.getElementById("question").value)])
+	{
+		score+=10;
+		alert("Correct!");
+	}
+	else
+	{
+		alert("Sorry, next question");
+	}
+	
+	document.getElementById("scoredisplay").value = "Score = " + score + "/" + questions.length + "00"
+}
+
+function ansCheck(b)
+{
+	var check = -1;
+	for (var i = 0; i < questions.length; i++)
+	{
+		if (questions[i] == b )
+		{
+			check = i;
+		}
+	}
+	return check;
+}
+
+
+
+
+
+
+</script>
+</head>
+<body > 
+<center>
+<h1>Time for a Random Quiz!</h1>
+<input id= "start" type="button" value="Start" onclick="q1()"/>
+<br/><br/>
+
+<input id="scoredisplay" type="text" size = "20" readonly = "true"/> <br/><br/>
+
+<table border = 4>
+<tr>
+	<td>  	<input id="question" type="text" size="70" readonly = true/>	</td>
+</tr>
+<tr height = "12"><td></td>
+</tr>
+<tr>
+	<td>	<input id="answer" type="text" size="70" /> </td>
+</tr>
+</table>
+<br/><br/>
+
+<input id= "next" style="visibility:hidden" type="button" value="Next Question" onclick="qNext()"/>
+
+
+<br/><br/>
+<h3> <a href="index.html">Homepage</a> </h3>
+</center>
+
+
+</body>
+</html>
