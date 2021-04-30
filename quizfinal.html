@@ -2,8 +2,8 @@
 <head> 
 <script language="JavaScript">
 
-var questions = ["2 + 2?", "What band released the song 'Africa'?", "What does the roman numeral XIV stand for?", "What company released the Xbox?", "What do you call a baby deer?", "How many days are in a leap year?", "Which element has the symbol Fe?", "What house was Harry Potter almost put into?", "What color of visable light has the lowest frequesncy?", "(44864*6+64)*1738?"];
-var answers = ["4", "toto", "14", "microsoft", "fawn", "366", "iron", "slytherin", "red", "467953024"];
+var questions = ["1 + 2?", "About how many years does it take for honey to spoil", "Can you make a bridge from here to here?", "Okay, but how about from here to there?", "What company's clogan is 'Just Do It'?", "Who wrote the song 'Story of My Life'?", "What is the first name of the man on the $20 bill", "In Astronomical Units, how far is the Earth from the Sun?", "What company made the gamecube?", "(13,546 * 135 - 10) / 100?"];
+var answers = ["3", "32000", "no", "yes", "nike", "social distortion", "andrew", "1", "nintendo", "18287"];
 var num = 0;
 var score = 0;
 
@@ -15,7 +15,7 @@ function q1()
 	num++;
 	document.getElementById("start").style.visibility = "hidden";
 	document.getElementById("next").style.visibility = "visible";
-	document.getElementById("scoredisplay").value = "Score = " + score + "/" + questions.length + "00";
+	document.getElementById("scoredisplay").value = "Score = " + score + "/" + questions.length + "0";
 }
 
 function qNext()
@@ -29,7 +29,7 @@ function qNext()
 		}
 		num = 0;
 		score = 0;
-		document.getElementById("scoredisplay").value = "Score = " + score + "/" + questions.length + "00"
+		document.getElementById("scoredisplay").value = "Score = " + score + "/" + questions.length + "0"
 	}
 	document.getElementById("question").value = questions[num]
 	num++
@@ -48,7 +48,7 @@ function scoreUpdate()
 		alert("Sorry, next question");
 	}
 	
-	document.getElementById("scoredisplay").value = "Score = " + score + "/" + questions.length + "00"
+	document.getElementById("scoredisplay").value = "Score = " + score + "/" + questions.length + "0"
 }
 
 function ansCheck(b)
@@ -75,7 +75,7 @@ function ansCheck(b)
 <center>
 <h1>Time for a Random Quiz!</h1>
 <input id= "start" type="button" value="Start" onclick="q1()"/>
-<br/><br/><br/>
+<br/><br/>
 
 <input id="scoredisplay" type="text" size = "20" readonly = "true"/> <br/><br/>
 
